@@ -15,9 +15,10 @@ function getAddExistingFilters(relationshipName, primaryEntityName)
 
 // Custom function to call instead of the OOTB Add Existing button/command - all 4 parameters can be passed from the ribbon
 function filterAddExisting(selectedEntityTypeName, selectedControl, firstPrimaryItemId, relationshipList) {
+
 	var relationshipName = selectedControl.getRelationship().name;
 	var primaryEntityName = Xrm.Page.data.entity.getEntityName();
-	if (relationshipList.indexOf(relationshipName) > -1) {
+	if (relationshipList.indexOf(relationshipName) > -1 || typeof(XrmCore) == "undefined" ) {
         var options = {
             allowMultiSelect: true,
             entityTypes: [selectedEntityTypeName],
